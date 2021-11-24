@@ -1,29 +1,71 @@
 import pygame
 import time
 import random
-
+#Iniciamos el juego
 pygame.init()
 
+#Altura y anchura de la pantalla
 display_width = 800
 display_height = 600
 
+#colores utilizados
 black = (0, 0, 0)
 white = (255, 255, 255)
 red = (255, 0, 0)
 green = (150, 450, 100)
 bright_green = (150, 350, 100)
 block_color = (53, 115, 255)
+color_light = (170, 170, 170)
+color_dark=(100, 100, 100)
 
-# car_width = 73
+#Definicion de tipo de letra
+small_font = pygame.font.SysFont('Corbel', 35)
 
+#iniciamos la pantalla
 startScreen = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption('A bit Racey')
 clock = pygame.time.Clock()
 
-
+salir = small_font.render('Salir', True, white)
+jugar = small_font.render('Jugar',True, white)
 # carImg = pygame.image.load('racecar.png')
 
+while True:
 
+    for ev in pygame.event.get():
+
+        if ev.type == pygame.QUIT:
+            pygame.quit()
+
+            # checks if a mouse is clicked
+        if ev.type == pygame.MOUSEBUTTONDOWN:
+
+            # if the mouse is clicked on the
+            # button the game is terminated
+            if display_width / 2 <= mouse[0] <= display_width / 2 + 140 and display_height / 2 <= mouse[1] <= display_width / 2 + 40:
+                pygame.quit()
+
+                # fills the screen with a color
+    startScreen.fill((60, 25, 60))
+
+    # stores the (x,y) coordinates into
+    # the variable as a tuple
+    mouse = pygame.mouse.get_pos()
+
+    # if mouse is hovered on a button it
+    # changes to lighter shade
+    if display_width / 2 <= mouse[0] <= display_width / 2 + 140 and display_height / 2 <= mouse[1] <= display_height / 2 + 40:
+        pygame.draw.rect(startScreen, color_light, [display_width / 2, display_height / 2, 140, 40])
+
+    else:
+        pygame.draw.rect(startScreen, color_dark, [display_width / 2, display_height / 2, 140, 40])
+
+        # superimposing the text onto our button
+    startScreen.blit(salir, (display_width / 2 + 50, display_height / 2))
+
+    # updates the frames of the game
+    pygame.display.update()
+'''
 def things_dodged(count):
     font = pygame.font.SysFont(None, 25)
     text = font.render("Dodged: " + str(count), True, black)
@@ -99,6 +141,7 @@ def game_intro():
 
 
 '''
+'''
 def game_loop():
     x = (display_width * 0.45)
     y = (display_height * 0.8)
@@ -162,9 +205,9 @@ def game_loop():
 
         pygame.display.update()
         clock.tick(60)
-'''
 
 game_intro()
 # game_loop()
 pygame.quit()
 quit()
+'''
