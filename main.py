@@ -6,7 +6,6 @@ import inicio
 from var import *
 
 pygame.init()
-pygame.init()
 #Altura y anchura de la pantalla
 
 
@@ -39,8 +38,8 @@ while True:
                 pygame.quit()
             if display_width / 2 -175 <= mouse[0] <= display_width / 2 + 140 and display_height / 2 <= mouse[1] <= display_width / 2 + 40:
                 print('ha seleccionado jugar')
+                startScreen.fill((70, 65, 40))
 
-                inicio.Inicio.inicio()
 
 
     # (x,y)
